@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
+/* eslint-disable no-lonely-if */
+import cx from 'classnames'
 import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import { CellComponent, CellProps, Column } from '../types'
-import cx from 'classnames'
 import { useFirstRender } from '../hooks/useFirstRender'
 
 type TextColumnOptions<T> = {

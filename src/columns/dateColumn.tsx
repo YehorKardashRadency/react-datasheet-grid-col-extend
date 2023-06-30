@@ -1,6 +1,6 @@
+import cx from 'classnames'
 import React, { useLayoutEffect, useRef } from 'react'
 import { CellComponent, CellProps, Column } from '../types'
-import cx from 'classnames'
 
 const DateComponent = React.memo<CellProps<Date | null, any>>(
   ({ focus, active, rowData, setRowData }) => {
@@ -34,7 +34,7 @@ const DateComponent = React.memo<CellProps<Date | null, any>>(
         // ...and the input returns a string that should be converted into a Date object
         onChange={(e) => {
           const date = new Date(e.target.value)
-          setRowData(isNaN(date.getTime()) ? null : date)
+          setRowData(Number.isNaN(date.getTime()) ? null : date)
         }}
       />
     )
@@ -52,7 +52,7 @@ export const dateColumn: Partial<Column<Date | null, any, string>> = {
   // Because the Date constructor works using iso format, we can use it to parse ISO string back to a Date object
   pasteValue: ({ value }) => {
     const date = new Date(value.replace(/\.\s?|\//g, '-'))
-    return isNaN(date.getTime()) ? null : date
+    return Number.isNaN(date.getTime()) ? null : date
   },
   minWidth: 170,
   isCellEmpty: ({ rowData }) => !rowData,

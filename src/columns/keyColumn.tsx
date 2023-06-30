@@ -22,6 +22,7 @@ const KeyComponent: CellComponent<any, ColumnData> = ({
   )
 
   if (!original.component) {
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     return <></>
   }
 
@@ -76,7 +77,11 @@ export const keyColumn = <
     typeof column.cellClassName === 'function'
       ? ({ rowData, rowIndex, columnId }) => {
           return typeof column.cellClassName === 'function'
-            ? column.cellClassName({ rowData: rowData[key], rowIndex, columnId })
+            ? column.cellClassName({
+                rowData: rowData[key],
+                rowIndex,
+                columnId,
+              })
             : column.cellClassName ?? undefined
         }
       : column.cellClassName,

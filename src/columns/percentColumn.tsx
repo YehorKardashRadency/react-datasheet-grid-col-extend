@@ -13,15 +13,15 @@ export const percentColumn = createTextColumn<number | null>({
   // We could have just multiply percentages by 100, but floating point arithmetic won't work as expected: 0.29 * 100 === 28.999999999999996
   // So we have to round those numbers to 10 decimals before turning them into strings
   formatInputOnFocus: (value) =>
-    typeof value === 'number' && !isNaN(value)
+    typeof value === 'number' && !Number.isNaN(value)
       ? String(Math.round(value * TEN_TO_THE_12) / TEN_TO_THE_10)
       : '',
   parseUserInput: (value) => {
     const number = parseFloat(value)
-    return !isNaN(number) ? number / 100 : null
+    return !Number.isNaN(number) ? number / 100 : null
   },
   parsePastedValue: (value) => {
     const number = parseFloat(value)
-    return !isNaN(number) ? number : null
+    return !Number.isNaN(number) ? number : null
   },
 })

@@ -6,10 +6,10 @@ export const floatColumn = createTextColumn<number | null>({
     typeof value === 'number' ? new Intl.NumberFormat().format(value) : '',
   parseUserInput: (value) => {
     const number = parseFloat(value)
-    return !isNaN(number) ? number : null
+    return !Number.isNaN(number) ? number : null
   },
   parsePastedValue: (value) => {
     const number = parseFloat(value)
-    return !isNaN(number) ? number : null
+    return !Number.isNaN(number) ? number : null
   },
 })

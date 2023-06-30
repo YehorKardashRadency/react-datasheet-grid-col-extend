@@ -93,7 +93,13 @@ export type AddRowsComponentProps = {
 
 export type ContextMenuItem =
   | {
-      type: 'INSERT_ROW_BELLOW' | 'DELETE_ROW' | 'DUPLICATE_ROW' | 'COPY' | 'CUT' | 'PASTE'
+      type:
+        | 'INSERT_ROW_BELLOW'
+        | 'DELETE_ROW'
+        | 'DUPLICATE_ROW'
+        | 'COPY'
+        | 'CUT'
+        | 'PASTE'
       action: () => void
     }
   | {
@@ -118,6 +124,7 @@ export type Operation = {
 }
 
 export type DataSheetGridProps<T> = {
+  copyByRow?: boolean
   value?: T[]
   style?: React.CSSProperties
   className?: string

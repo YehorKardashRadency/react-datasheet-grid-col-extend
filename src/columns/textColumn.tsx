@@ -52,6 +52,7 @@ const TextComponent = React.memo<
   }) => {
     const ref = useRef<HTMLInputElement>(null)
     const firstRender = useFirstRender()
+
     // We create refs for async access so we don't have to add it to the useEffect dependencies
     const asyncRef = useRef({
       rowData,

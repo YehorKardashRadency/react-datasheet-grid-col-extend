@@ -52,7 +52,6 @@ const TextComponent = React.memo<
   }) => {
     const ref = useRef<HTMLInputElement>(null)
     const firstRender = useFirstRender()
-
     // We create refs for async access so we don't have to add it to the useEffect dependencies
     const asyncRef = useRef({
       rowData,
@@ -125,7 +124,8 @@ const TextComponent = React.memo<
     }, [focus])
 
     useEffect(() => {
-      if (ref.current) {
+      console.log(rowData)
+      if (!focus && ref.current) {
         // On blur or when the data changes, format it for display
         ref.current.value = asyncRef.current.formatBlurredInput(rowData)
       }

@@ -991,34 +991,36 @@ export const DataSheetGrid = React.memo(
             (!(event.shiftKey && activeCell) || rightClick) &&
             data.length > 0
           ) {
-            setActiveCell(
-              cursorIndex && {
-                col:
-                  (rightClickInSelection || rightClickOnSelectedHeaders) &&
-                  activeCell
-                    ? activeCell.col
-                    : Math.max(
-                        0,
-                        clickOnStickyRightColumn ? 0 : cursorIndex.col
-                      ),
-                row:
-                  (rightClickInSelection ||
-                    rightClickOnSelectedGutter ||
-                    clickOnSelectedStickyRightColumn) &&
-                  activeCell
-                    ? activeCell.row
-                    : Math.max(0, cursorIndex.row),
-                doNotScrollX: Boolean(
-                  (rightClickInSelection && activeCell) ||
-                    clickOnStickyRightColumn ||
-                    cursorIndex.col === -1
-                ),
-                doNotScrollY: Boolean(
-                  (rightClickInSelection && activeCell) ||
-                    cursorIndex.row === -1
-                ),
-              }
-            )
+            console.log('outside click')
+            if (cursorIndex != null)
+              setActiveCell(
+                cursorIndex && {
+                  col:
+                    (rightClickInSelection || rightClickOnSelectedHeaders) &&
+                    activeCell
+                      ? activeCell.col
+                      : Math.max(
+                          0,
+                          clickOnStickyRightColumn ? 0 : cursorIndex.col
+                        ),
+                  row:
+                    (rightClickInSelection ||
+                      rightClickOnSelectedGutter ||
+                      clickOnSelectedStickyRightColumn) &&
+                    activeCell
+                      ? activeCell.row
+                      : Math.max(0, cursorIndex.row),
+                  doNotScrollX: Boolean(
+                    (rightClickInSelection && activeCell) ||
+                      clickOnStickyRightColumn ||
+                      cursorIndex.col === -1
+                  ),
+                  doNotScrollY: Boolean(
+                    (rightClickInSelection && activeCell) ||
+                      cursorIndex.row === -1
+                  ),
+                }
+              )
           }
 
           if (clickOnActiveCell && !rightClick) {

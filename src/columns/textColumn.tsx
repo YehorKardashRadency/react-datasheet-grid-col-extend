@@ -125,7 +125,7 @@ const TextComponent = React.memo<
     }, [focus])
 
     useEffect(() => {
-      if (!focus && ref.current) {
+      if (ref.current) {
         // On blur or when the data changes, format it for display
         ref.current.value = asyncRef.current.formatBlurredInput(rowData)
       }

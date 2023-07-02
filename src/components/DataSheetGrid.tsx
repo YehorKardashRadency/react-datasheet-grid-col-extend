@@ -989,7 +989,8 @@ export const DataSheetGrid = React.memo(
 
           if (
             (!(event.shiftKey && activeCell) || rightClick) &&
-            data.length > 0
+            data.length > 0 &&
+            cursorIndex
           ) {
             setActiveCell(
               cursorIndex && {

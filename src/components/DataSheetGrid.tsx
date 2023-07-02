@@ -91,7 +91,7 @@ export const DataSheetGrid = React.memo(
       ref: React.ForwardedRef<DataSheetGridRef>
     ): JSX.Element => {
       const lastEditingCellRef = useRef<Cell | null>(null)
-      const disableContextMenu = disableContextMenuRaw || lockRows
+      const disableContextMenu = disableContextMenuRaw
       const columns = useColumns(rawColumns, gutterColumn, stickyRightColumn)
       const hasStickyRightColumn = Boolean(stickyRightColumn)
       const innerRef = useRef<HTMLDivElement>(null)

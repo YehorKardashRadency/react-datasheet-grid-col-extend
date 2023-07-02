@@ -1727,6 +1727,8 @@ export const DataSheetGrid = React.memo(
           setSelectionMode({ columns: false, active: false, rows: false })
           setSelectionCell(null)
         },
+        setContextMenu,
+        contextMenu,
       }))
 
       const callbacksRef = useRef({

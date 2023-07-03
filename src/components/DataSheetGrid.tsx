@@ -550,8 +550,8 @@ export const DataSheetGrid = React.memo(
           }
 
           if (smartDelete && deepEqual(newData, data)) {
-            // setActiveCell({ col: 0, row: min.row, doNotScrollX: true })
-            // setSelectionCell(null)
+            setActiveCell({ col: 0, row: min.row, doNotScrollX: true })
+            setSelectionCell(null)
             return
           }
 

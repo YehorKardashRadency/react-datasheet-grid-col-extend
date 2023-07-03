@@ -1084,15 +1084,14 @@ export const DataSheetGrid = React.memo(
           )
 
           if (event.shiftKey && activeCell && !rightClick) {
-            setSelectionCell(
-              cursorIndex && {
+            if (cursorIndex)
+              setSelectionCell({
                 col: Math.max(
                   0,
                   cursorIndex.col - (clickOnStickyRightColumn ? 1 : 0)
                 ),
                 row: Math.max(0, cursorIndex.row),
-              }
-            )
+              })
           } else if (!rightClickInSelection) {
             if (
               cursorIndex &&

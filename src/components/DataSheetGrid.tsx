@@ -601,6 +601,44 @@ export const DataSheetGrid = React.memo(
         [activeCell?.row, autoAddRow, insertRowAfter, setActiveCell]
       )
 
+      const getCopyData = useCallback((): [string, string] | null => {
+        if (activeCell) {
+          const copyData: Array<Array<number | string | null>> = []
+
+          const min: Cell = selection?.min || activeCell
+          const max: Cell = selection?.max || activeCell
+
+          for (let row = min.row; row <= max.row; ++row) {
+            copyData.push([])
+
+            for (let col = min.col; col <= max.col; ++col) {
+              const { copyValue = () => null } = columns[col + 1]
+              copyData[row - min.row].push(
+                copyValue({ rowData: data[row], rowIndex: row })
+              )
+            }
+          }
+
+          const textPlain = copyData.map((row) => row.join('\t')).join('\n')
+          const textHtml = `<table>${copyData
+            .map(
+              (row) =>
+                `<tr>${row
+                  .map(
+                    (cell) =>
+                      `<td>${encodeHtml(String(cell ?? '')).replace(
+                        /\n/g,
+                        '<br/>'
+                      )}</td>`
+                  )
+                  .join('')}</tr>`
+            )
+            .join('')}</table>`
+          return [textPlain, textHtml]
+        }
+        return null
+      }, [activeCell, columns, data, selection])
+
       const onCopy = useCallback(
         async (event?: ClipboardEvent) => {
           if (!editing && activeCell) {
@@ -1729,6 +1767,8 @@ export const DataSheetGrid = React.memo(
         },
         setContextMenu,
         contextMenu,
+        getCopyData,
+        deleteSelection,
       }))
 
       const callbacksRef = useRef({

@@ -185,6 +185,8 @@ export type DataSheetGridRef = {
   selection: SelectionWithId | null
   setActiveCell: (activeCell: CellWithIdInput | null) => void
   setSelection: (selection: SelectionWithIdInput | null) => void
+  deleteSelection: () => void
+  getCopyData: () => [string, string] | null
   contextMenu: {
     x: number
     y: number

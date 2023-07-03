@@ -786,13 +786,7 @@ export const DataSheetGrid = React.memo(
                 },
               ])
               setActiveCell({ col: min.col, row: min.row })
-              setSelectionCell({
-                col: Math.min(
-                  min.col + pasteData[0].length - 1,
-                  columns.length - (hasStickyRightColumn ? 3 : 2)
-                ),
-                row: max.row,
-              })
+              setSelectionCell(null)
             } else {
               // Paste multiple rows
               let newData = [...data]
@@ -888,7 +882,14 @@ export const DataSheetGrid = React.memo(
           setSelectionCell,
         ]
       )
-
+      const pasteFromClipboard = useCallback(() => {
+        if (activeCell && !editing) {
+          navigator.clipboard.readText().then((value) => {
+            const pasteData = parseTextPlainData(value)
+            applyPasteDataToDatasheet(pasteData)
+          })
+        }
+      }, [activeCell, applyPasteDataToDatasheet, editing])
       const onPaste = useCallback(
         (event: ClipboardEvent) => {
           if (activeCell && !editing) {
@@ -1762,6 +1763,7 @@ export const DataSheetGrid = React.memo(
         contextMenu,
         getCopyData,
         deleteSelection,
+        pasteFromClipboard,
       }))
 
       const callbacksRef = useRef({

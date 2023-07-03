@@ -187,6 +187,7 @@ export type DataSheetGridRef = {
   setSelection: (selection: SelectionWithIdInput | null) => void
   deleteSelection: () => void
   getCopyData: () => [string, string] | null
+  pasteFromClipboard: () => void
   contextMenu: {
     x: number
     y: number

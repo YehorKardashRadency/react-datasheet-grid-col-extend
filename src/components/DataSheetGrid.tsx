@@ -1129,8 +1129,6 @@ export const DataSheetGrid = React.memo(
               }
 
               setSelectionCell({ col, row, doNotScrollX, doNotScrollY })
-            } else {
-              setSelectionCell(null)
             }
 
             if (clickInside) {

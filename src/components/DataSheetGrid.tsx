@@ -1126,7 +1126,7 @@ export const DataSheetGrid = React.memo(
               }
 
               setSelectionCell({ col, row, doNotScrollX, doNotScrollY })
-            } else {
+            } else if (cursorIndex) {
               setSelectionCell(null)
             }
 

@@ -1458,7 +1458,11 @@ export const DataSheetGrid = React.memo(
               if (event.shiftKey) {
                 setSelectionCell((cell) => add(direction, cell || activeCell))
               } else {
-                setActiveCell((cell) => add(direction, cell))
+                const newCell = add(direction, activeCell)
+                setActiveCell(newCell)
+                if (newCell) {
+                  scrollTo(newCell)
+                }
                 setSelectionCell(null)
               }
             }

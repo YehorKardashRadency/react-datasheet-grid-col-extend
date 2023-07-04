@@ -98,7 +98,7 @@ export const DataSheetGrid = React.memo(
       const outerRef = useRef<HTMLDivElement>(null)
       const beforeTabIndexRef = useRef<HTMLDivElement>(null)
       const afterTabIndexRef = useRef<HTMLDivElement>(null)
-
+      const containerRef = useRef<HTMLDivElement>(null)
       // Default value is 1 for the border
       const [heightDiff, setHeightDiff] = useDebounceState(1, 100)
 
@@ -1766,6 +1766,7 @@ export const DataSheetGrid = React.memo(
         getCopyData,
         deleteSelection,
         pasteFromClipboard,
+        containerRef,
       }))
 
       const callbacksRef = useRef({
@@ -1824,7 +1825,7 @@ export const DataSheetGrid = React.memo(
       ])
 
       return (
-        <div className={className} style={style}>
+        <div className={className} style={style} ref={containerRef}>
           <div
             ref={beforeTabIndexRef}
             tabIndex={rawColumns.length && data.length ? 0 : undefined}

@@ -181,6 +181,7 @@ export type CellWithId = {
 export type SelectionWithId = { min: CellWithId; max: CellWithId }
 
 export type DataSheetGridRef = {
+  containerRef: React.RefObject<HTMLDivElement>
   activeCell: CellWithId | null
   selection: SelectionWithId | null
   setActiveCell: (activeCell: CellWithIdInput | null) => void

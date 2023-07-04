@@ -447,11 +447,11 @@ export const DataSheetGrid = React.memo(
       }, [selectionCell, scrollTo])
 
       // Scroll to the active cell when it changes
-      useEffect(() => {
-        if (activeCell) {
-          scrollTo(activeCell)
-        }
-      }, [activeCell, scrollTo])
+      // useEffect(() => {
+      //   if (activeCell) {
+      //     scrollTo(activeCell)
+      //   }
+      // }, [activeCell, scrollTo])
 
       const setRowData = useCallback(
         (rowIndex: number, item: T) => {

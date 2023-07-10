@@ -512,7 +512,6 @@ export const DataSheetGrid = React.memo(
 
       const deleteSelection = useCallback(
         (smartDelete = true) => {
-          console.log(activeCell)
           if (!activeCell) {
             return
           }
@@ -531,7 +530,6 @@ export const DataSheetGrid = React.memo(
             if (smartDelete) {
               deleteRows(min.row, max.row)
             }
-            console.log('empty')
             return
           }
 
@@ -549,13 +547,11 @@ export const DataSheetGrid = React.memo(
               }
             }
           }
-          if (smartDelete && deepEqual(newData, data)) {
-            setActiveCell({ col: 0, row: min.row, doNotScrollX: true })
-            setSelectionCell(null)
-            console.log('equal')
-            return
-          }
-          console.log('update')
+          // if (smartDelete && deepEqual(newData, data)) {
+          //   setActiveCell({ col: 0, row: min.row, doNotScrollX: true })
+          //   setSelectionCell(null)
+          //   return
+          // }
           onChange(newData, [
             {
               type: 'UPDATE',

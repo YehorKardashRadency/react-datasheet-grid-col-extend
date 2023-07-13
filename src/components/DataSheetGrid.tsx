@@ -284,7 +284,7 @@ export const DataSheetGrid = React.memo(
 
       const isCellDisabled = useCallback(
         (cell: Cell): boolean => {
-          const disabled = columns[cell.col + 1].disabled
+          const disabled = columns[cell.col + 1]?.disabled || false
 
           return Boolean(
             typeof disabled === 'function'

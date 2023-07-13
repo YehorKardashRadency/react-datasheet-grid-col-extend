@@ -5,7 +5,7 @@ import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import { CellComponent, CellProps, Column } from '../types'
 import { useFirstRender } from '../hooks/useFirstRender'
 
-type TextColumnOptions<T> = {
+export type TextColumnOptions<T> = {
   placeholder?: string
   alignRight?: boolean
   // When true, data is updated as the user types, otherwise it is only updated on blur. Default to true
@@ -24,7 +24,7 @@ type TextColumnOptions<T> = {
   parsePastedValue?: (value: string) => T
 }
 
-type TextColumnData<T> = {
+export type TextColumnData<T> = {
   placeholder?: string
   alignRight: boolean
   continuousUpdates: boolean
@@ -33,7 +33,7 @@ type TextColumnData<T> = {
   formatInputOnFocus: (value: T) => string
 }
 
-const TextComponent = React.memo<
+export const TextComponent = React.memo<
   CellProps<string | null, TextColumnData<string | null>>
 >(
   ({

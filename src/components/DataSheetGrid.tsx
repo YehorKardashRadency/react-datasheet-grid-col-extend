@@ -1011,7 +1011,12 @@ export const DataSheetGrid = React.memo(
             cursorIndex.row >= selection.min.row &&
             cursorIndex.row <= selection.max.row
 
-          if (rightClick && !disableContextMenu && clickOnActiveCell) {
+          if (
+            rightClick &&
+            !disableContextMenu &&
+            cursorIndex &&
+            !isCellDisabled(cursorIndex)
+          ) {
             setContextMenu({
               x: event.clientX,
               y: event.clientY,

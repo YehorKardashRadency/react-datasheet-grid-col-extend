@@ -163,6 +163,7 @@ export type DataSheetGridProps<T> = {
   onActiveCellChange?: (opts: { cell: CellWithId | null }) => void
   onSelectionChange?: (opts: { selection: SelectionWithId | null }) => void
   onScroll?: React.UIEventHandler<HTMLDivElement> | undefined
+  refreshRate?: number
 }
 
 type CellWithIdInput = {

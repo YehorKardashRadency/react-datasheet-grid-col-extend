@@ -87,6 +87,7 @@ export const DataSheetGrid = React.memo(
         cellClassName,
         onScroll,
         copyByRow = false,
+        refreshRate = 100,
       }: DataSheetGridProps<T>,
       ref: React.ForwardedRef<DataSheetGridRef>
     ): JSX.Element => {
@@ -116,7 +117,7 @@ export const DataSheetGrid = React.memo(
       const { width, height } = useResizeDetector({
         targetRef: outerRef,
         refreshMode: 'throttle',
-        refreshRate: 500,
+        refreshRate,
       })
 
       setHeightDiff(height ? displayHeight - Math.ceil(height) : 0)

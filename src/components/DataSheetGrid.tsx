@@ -538,14 +538,14 @@ export const DataSheetGrid = React.memo(
 
           for (let row = min.row; row <= max.row; ++row) {
             for (let col = min.col; col <= max.col; ++col) {
-              if (!isCellDisabled({ col, row })) {
+              // if (!isCellDisabled({ col, row })) {
                 const { deleteValue = ({ rowData }) => rowData } =
                   columns[col + 1]
                 newData[row] = deleteValue({
                   rowData: newData[row],
                   rowIndex: row,
                 })
-              }
+              // }
             }
           }
           // if (smartDelete && deepEqual(newData, data)) {

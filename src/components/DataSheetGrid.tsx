@@ -970,8 +970,8 @@ export const DataSheetGrid = React.memo(
             cursorIndex &&
             activeCell &&
             activeCell.col === cursorIndex.col &&
-            activeCell.row === cursorIndex.row &&
-            !isCellDisabled(activeCell)
+            activeCell.row === cursorIndex.row 
+            // && !isCellDisabled(activeCell)
 
           if (clickOnActiveCell && editing) {
             return

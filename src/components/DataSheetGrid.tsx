@@ -1522,7 +1522,7 @@ export const DataSheetGrid = React.memo(
             !event.metaKey &&
             !event.altKey
           ) {
-            if (!editing && !isCellDisabled(activeCell)) {
+            if (!editing) {
               lastEditingCellRef.current = activeCell
               setSelectionCell(null)
               setEditing(true)

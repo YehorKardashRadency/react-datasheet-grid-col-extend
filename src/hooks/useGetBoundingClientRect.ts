@@ -13,8 +13,9 @@ export const useGetBoundingClientRect = (
       throttle(delay, true, () => {
         setTimeout(
           () =>
-            (boundingRect.current =
-              ref.current?.getBoundingClientRect() || null),
+            (boundingRect.current = ref.current?.getBoundingClientRect
+              ? ref.current?.getBoundingClientRect() || null
+              : null),
           0
         )
       }),
@@ -24,7 +25,9 @@ export const useGetBoundingClientRect = (
   return useCallback(
     (force = false) => {
       if (force) {
-        boundingRect.current = ref.current?.getBoundingClientRect() || null
+        boundingRect.current = ref.current?.getBoundingClientRect
+          ? ref.current?.getBoundingClientRect() || null
+          : null
       } else {
         throttledCompute()
       }

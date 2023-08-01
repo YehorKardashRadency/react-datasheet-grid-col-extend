@@ -10,7 +10,7 @@
     "format": "prettier --write src/. && prettier --write example/src/.",
     "lint": "eslint src/.",
     "test": "jest",
-    "prepare": "npm run build"
+    "prepare": "npm run build && yarn build "
   },
   "keywords": [
     "react",
